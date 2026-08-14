@@ -8,6 +8,9 @@ import Services from './components/Services';
 import Expertise from './components/Expertise';
 import Team from './components/Team';
 import WhyUs from './components/WhyUs';
+import Statistics from './components/Statistics';
+import BiotechVisualizer from './components/BiotechVisualizer';
+import FinalCTA from './components/FinalCTA';
 import Contact from './components/Contact';
 
 // Root App: assembles the landing page sections and provides theme + smooth scroll
@@ -39,8 +42,11 @@ function App() {
         <About />
         <Services />
         <Expertise />
+        <Statistics />
+        <BiotechVisualizer />
         <WhyUs />
         <Team />
+        <FinalCTA onContact={() => handleNavigate('contact')} />
         <Contact />
       </main>
     </div>
