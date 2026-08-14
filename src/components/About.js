@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import aboutImg from '../assets/images/about.svg';
 
@@ -31,8 +31,49 @@ export default function About() {
               </motion.div>
             ))}
           </div>
+
+          <div className="lb-about-counters">
+            <Counter end={15} label="Years Exp" />
+            <Counter end={500} label="Projects Completed" />
+            <Counter end={50} label="Global Clients" />
+          </div>
         </div>
       </div>
     </section>
+  );
+}
+
+function Counter({ end = 0, label = '' }) {
+  const [value, setValue] = useState(0);
+  const ref = useRef();
+
+  useEffect(() => {
+    let observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const duration = 1200;
+          const start = performance.now();
+          const from = 0;
+          const to = end;
+          const step = (now) => {
+            const t = Math.min(1, (now - start) / duration);
+            const eased = t;
+            setValue(Math.floor(from + (to - from) * eased));
+            if (t < 1) requestAnimationFrame(step);
+          };
+          requestAnimationFrame(step);
+          observer.disconnect();
+        }
+      });
+    }, { threshold: 0.3 });
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [end]);
+
+  return (
+    <div className="lb-counter" ref={ref}>
+      <div className="lb-counter-value">{value}{end >= 100 ? '+' : ''}</div>
+      <div className="lb-counter-label">{label}</div>
+    </div>
   );
 }

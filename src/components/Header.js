@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import FloatingThemeToggle from './FloatingThemeToggle';
 
 // Header component
@@ -7,6 +7,17 @@ import FloatingThemeToggle from './FloatingThemeToggle';
 // - Receives `theme` and `toggleTheme` to control the light/dark mode
 export default function Header({ onNavigate, theme, toggleTheme }) {
   const [openSubmenu, setOpenSubmenu] = useState(null);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => {
+      const threshold = document.documentElement.scrollHeight * 0.003; // 0.3%
+      setScrolled(window.scrollY > threshold);
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   const menus = [
     { id: 'hero', label: 'Home' },
@@ -17,7 +28,7 @@ export default function Header({ onNavigate, theme, toggleTheme }) {
   ];
 
   return (
-    <header className="lb-header">
+    <header className={`lb-header ${scrolled ? 'scrolled' : ''}`}>
       <div className="lb-header-inner">
         <div className="lb-logo" onClick={() => onNavigate('hero')}>
           <div className="lb-logo-mark">MB</div>
