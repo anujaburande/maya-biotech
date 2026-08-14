@@ -1,0 +1,33 @@
+.textfield {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 1rem;
+
+  &__label {
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+
+  &__input {
+    padding: 0.55rem 0.75rem;
+    border-radius: $border-radius;
+    border: 1px solid #d4d4d4;
+    font-size: 0.95rem;
+
+    &:focus {
+      outline: none;
+      border-color: $primary-color;
+      box-shadow: 0 0 0 2px rgba($primary-color, 0.15);
+    }
+
+    &--error {
+      border-color: #e11d48;
+    }
+  }
+
+  &__error {
+    font-size: 0.75rem;
+    color: #e11d48;
+  }
+}

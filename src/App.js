@@ -1,23 +1,44 @@
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
 import './App.css';
+import './assets/styles/landing.scss';
+import Header from './components/Header';
+import Hero from './components/Hero';
+import About from './components/About';
+import Services from './components/Services';
+import Expertise from './components/Expertise';
+import Contact from './components/Contact';
 
+// Root App: assembles the landing page sections and provides theme + smooth scroll
 function App() {
+  const [theme, setTheme] = useState('light');
+
+  useEffect(() => {
+    // Apply theme class to document element for CSS variables
+    if (theme === 'dark') document.documentElement.classList.add('dark');
+    else document.documentElement.classList.remove('dark');
+  }, [theme]);
+
+  function toggleTheme() {
+    setTheme((t) => (t === 'light' ? 'dark' : 'light'));
+  }
+
+  // Smooth scroll helper called from Header menu clicks
+  function handleNavigate(id) {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header onNavigate={handleNavigate} theme={theme} toggleTheme={toggleTheme} />
+
+      <main>
+        <Hero />
+        <About />
+        <Services />
+        <Expertise />
+        <Contact />
+      </main>
     </div>
   );
 }

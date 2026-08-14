@@ -1,0 +1,25 @@
+.filter-panel {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-end;
+  margin: 1rem 0;
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+
+    label {
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    select {
+      padding: 0.45rem 0.7rem;
+      border-radius: $border-radius;
+      border: 1px solid #ddd;
+      font-size: 0.9rem;
+    }
+  }
+}

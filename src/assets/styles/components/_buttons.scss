@@ -1,0 +1,54 @@
+.btn {
+  border: none;
+  border-radius: $border-radius;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  transition: transform 0.08s ease, box-shadow 0.08s ease, background 0.15s;
+
+  &--primary {
+    background: $primary-color;
+    color: #fff;
+
+    &:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+    }
+  }
+
+  &--secondary {
+    background: #fff;
+    border: 1px solid #ddd;
+  }
+
+  &--ghost {
+    background: transparent;
+  }
+
+  &--sm {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+  }
+
+  &--md {
+    padding: 0.6rem 1.2rem;
+  }
+
+  &--lg {
+    padding: 0.8rem 1.4rem;
+    font-size: 1rem;
+  }
+
+  &--full {
+    width: 100%;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}

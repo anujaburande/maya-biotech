@@ -1,0 +1,33 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+
+  &__logo a {
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: $primary-color;
+  }
+
+  &__links {
+    display: flex;
+    gap: 1rem;
+
+    a {
+      font-size: 0.95rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: $border-radius;
+
+      &.active {
+        background-color: $primary-color;
+        color: #fff;
+      }
+    }
+  }
+}
