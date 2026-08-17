@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
+import aboutImg from '../assets/images/about.svg';
 
 // About section — left image is provided via CSS background; cards animate down on scroll
 export default function About() {
@@ -10,7 +11,7 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="lb-section lb-about">
+    <section id="about" className="lb-section lb-about" style={{ backgroundImage: `url(${aboutImg})` }}>
       <div className="lb-about-inner container">
         <div className="row">
           <div className="col-12 col-md-12">
@@ -18,22 +19,27 @@ export default function About() {
               <h2>About Maya Biotech</h2>
               <p>We combine research and ethics to build scalable biotech products.</p>
 
-              <div className="lb-about-cards d-flex justify-content-center">
+              <motion.div
+                className="lb-about-cards d-flex justify-content-center"
+                initial={{ y: -200, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                viewport={{ once: true, amount: 0.25 }}
+                transition={{ duration: 0.9, ease: 'easeOut' }}
+              >
                 {cards.map((c, idx) => (
                   <motion.div
                     key={c.title}
                     className="lb-card mx-2"
-                    initial={{ y: -200, opacity: 0 }}
-                    whileInView={{ y: 0, opacity: 1 }}
-                    viewport={{ once: true, amount: 0.25 }}
-                    transition={{ type: 'spring', stiffness: 120, damping: 14, delay: 0.15 * idx }}
+                    initial={{ x: 0 }}
+                    animate={{ x: idx === 0 ? -16 : idx === 2 ? 16 : 0 }}
+                    transition={{ duration: 0.6, ease: 'easeOut' }}
                     whileHover={{ y: -6 }}
                   >
                     <h4>{c.title}</h4>
                     <p>{c.text}</p>
                   </motion.div>
                 ))}
-              </div>
+              </motion.div>
 
               <div className="lb-about-counters mt-4 d-flex justify-content-start">
                 <Counter end={15} label="Years Exp" />
@@ -82,3 +88,5 @@ function Counter({ end = 0, label = '' }) {
     </div>
   );
 }
+
+// AnimatedCard removed; cards animate together via parent motion div
