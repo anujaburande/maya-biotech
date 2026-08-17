@@ -18,14 +18,18 @@ export default function WhyUs() {
 
   return (
     <section id="whyus" className="lb-section lb-whyus">
-      <div className="lb-container">
-        <motion.div className="lb-whyus-head" initial={{ y: 20, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
+      <div className="container lb-container">
+        <div className="row">
+          <div className="col-12">
+            <motion.div className="lb-whyus-head" initial={{ y: 20, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
           <h2>Why Choose Maya Biotech</h2>
           <p>Milestones that shaped our journey and what makes us unique.</p>
-        </motion.div>
+            </motion.div>
+          </div>
+        </div>
 
-        <div className="lb-whyus-body">
-          <div className="lb-milestones">
+        <div className="row lb-whyus-body">
+          <div className="col-md-6 lb-milestones">
             {milestones.map((m) => (
               <motion.div key={m.year} className="lb-milestone" initial={{ y: 30, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
                 <div className="year">{m.year}</div>
@@ -34,7 +38,7 @@ export default function WhyUs() {
             ))}
           </div>
 
-          <div className="lb-unique">
+          <div className="col-md-6 lb-unique">
             {unique.map((u) => (
               <motion.div key={u} className="lb-unique-item" whileHover={{ scale: 1.03 }} transition={{ duration: 0.2 }}>
                 {u}

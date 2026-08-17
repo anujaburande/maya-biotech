@@ -5,9 +5,10 @@ import { motion } from 'framer-motion';
 export default function BiotechVisualizer() {
   return (
     <section id="visual" className="lb-section lb-visual">
-      <div className="lb-container">
-        <motion.div className="visual-wrap" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-          <svg viewBox="0 0 600 200" preserveAspectRatio="xMidYMid meet" className="helix">
+      <div className="container lb-container">
+        <motion.div className="visual-wrap row" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
+          <div className="col-lg-7">
+            <svg viewBox="0 0 600 200" preserveAspectRatio="xMidYMid meet" className="helix">
             <defs>
               <linearGradient id="g1" x1="0" x2="1">
                 <stop offset="0" stopColor="var(--primary)" />
@@ -25,8 +26,9 @@ export default function BiotechVisualizer() {
                 transition={{ duration: 0.4, delay: i * 0.05 }}
               />
             ))}
-          </svg>
-          <div className="visual-copy">
+            </svg>
+          </div>
+          <div className="col-lg-5 visual-copy">
             <h3>Interactive Lab Visual</h3>
             <p>Explore how our platform models molecular interactions in real-time.</p>
           </div>

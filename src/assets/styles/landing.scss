@@ -1,5 +1,6 @@
 // Landing page SCSS converted from Landing.css
 @import 'abstract/_variables.scss';
+@import 'abstract/_breakpoints.scss';
 
 html{scroll-behavior:smooth}
 
@@ -47,8 +48,7 @@ body{
 }
 
 .lb-header-inner{
-  max-width:1100px;
-  margin:0 auto;
+  
   display:flex;
   align-items:center;
   justify-content:space-between;
@@ -67,11 +67,11 @@ body{
 .lb-theme-toggle button{background:var(--bg);border:1px solid var(--muted);padding:10px;border-radius:999px}
 
 .lb-section{padding:60px 20px}
-.lb-section .lb-section-header{max-width:1100px;margin:0 auto 30px;text-align:center}
-.lb-hero-inner{max-width:1100px;margin:0 auto;display:flex;gap:24px;align-items:center}
+.lb-section .lb-section-header{margin:0 auto 30px;text-align:center}
+.lb-hero-inner{margin:0 auto;display:flex;gap:24px;align-items:center}
 .lb-hero-left{flex:1}
 .lb-hero-right{flex:1;text-align:right}
-.lb-hero-right img{max-width:420px;width:100%;border-radius:10px}
+.lb-hero-right img{border-radius:10px}
 .lb-hero-copy h1{font-size:34px;margin:0 0 10px}
 .lb-hero-controls{margin-top:16px}
 .dot{width:10px;height:10px;border-radius:50%;display:inline-block;margin-right:8px;background:#ddd;border:none}
@@ -103,7 +103,7 @@ body{
 .lb-form-sent{margin-top:8px;color:var(--accent)}
 
 /* Why Us */
-.lb-whyus .lb-container{max-width:1100px;margin:0 auto}
+.lb-whyus .container{ }
 .lb-whyus-head{text-align:center;margin-bottom:18px}
 .lb-whyus-body{display:flex;gap:18px;align-items:flex-start}
 .lb-milestones{flex:1;display:flex;flex-direction:column;gap:12px}
@@ -113,7 +113,7 @@ body{
 .lb-unique-item{background:linear-gradient(180deg,rgba(255,255,255,0.9),#fff);padding:12px;border-radius:8px}
 
 /* Team */
-.lb-team .lb-container{max-width:1100px;margin:0 auto;text-align:center}
+.lb-team .container{ text-align:center }
 .team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-top:16px}
 .team-card{background:var(--bg);padding:12px;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,0.06);display:flex;flex-direction:column;align-items:center;gap:8px}
 .team-card img{width:120px;height:120px;border-radius:8px;object-fit:cover}

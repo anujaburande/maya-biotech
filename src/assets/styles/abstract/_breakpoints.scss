@@ -1,0 +1,27 @@
+// Breakpoints for portrait and landscape orientations
+$bp-phone-portrait: 320px;
+$bp-phone-landscape: 480px;
+$bp-phablet: 600px;
+$bp-tablet-portrait: 768px;
+$bp-tablet-landscape: 900px;
+$bp-small-laptop: 1024px;
+$bp-laptop: 1200px;
+$bp-desktop: 1400px;
+$bp-wide: 1600px;
+
+// Orientation helpers
+@mixin portrait { @media (orientation: portrait) { @content; } }
+@mixin landscape { @media (orientation: landscape) { @content; } }
+
+// Range helpers
+@mixin until($width) { @media (max-width: $width) { @content; } }
+@mixin from($width) { @media (min-width: $width) { @content; } }
+
+// Device specific
+@mixin phone-portrait { @media (min-width: $bp-phone-portrait) and (max-width: $bp-phone-landscape) and (orientation: portrait) { @content; } }
+@mixin phone-landscape { @media (min-width: $bp-phone-landscape) and (max-width: $bp-phablet) and (orientation: landscape) { @content; } }
+@mixin tablet-portrait { @media (min-width: $bp-tablet-portrait) and (max-width: $bp-tablet-landscape) and (orientation: portrait) { @content; } }
+@mixin tablet-landscape { @media (min-width: $bp-tablet-landscape) and (max-width: $bp-small-laptop) and (orientation: landscape) { @content; } }
+
+// Example usage:
+// @include until($bp-tablet-portrait) { ... }
