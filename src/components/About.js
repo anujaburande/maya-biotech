@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import aboutImg from '../assets/images/about.svg';
+import aboutImg from '../assets/images/about.jpg';
 
 // About section — left image is provided via CSS background; cards animate down on scroll
 export default function About() {
