@@ -1,10 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import aboutImg from '../assets/images/about.svg';
 
-// About section
-// - Left: animated illustration (image)
-// - Right: heading, paragraph and small cards
+// About section — left image is provided via CSS background; cards animate down on scroll
 export default function About() {
   const cards = [
     { title: 'Mission', text: 'Deliver impactful biotech solutions.' },
@@ -14,28 +11,36 @@ export default function About() {
 
   return (
     <section id="about" className="lb-section lb-about">
-      <div className="lb-about-inner">
-        <motion.div className="lb-about-left" initial={{ x: -30, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.6 }}>
-          <img src={aboutImg} alt="about" className="img-fluid" />
-        </motion.div>
+      <div className="lb-about-inner container">
+        <div className="row">
+          <div className="col-12 col-md-12">
+            <div className="lb-about-right">
+              <h2>About Maya Biotech</h2>
+              <p>We combine research and ethics to build scalable biotech products.</p>
 
-        <div className="lb-about-right">
-          <h2>About Maya Biotech</h2>
-          <p>We combine research and ethics to build scalable biotech products.</p>
+              <div className="lb-about-cards d-flex justify-content-center">
+                {cards.map((c, idx) => (
+                  <motion.div
+                    key={c.title}
+                    className="lb-card mx-2"
+                    initial={{ y: -200, opacity: 0 }}
+                    whileInView={{ y: 0, opacity: 1 }}
+                    viewport={{ once: true, amount: 0.25 }}
+                    transition={{ type: 'spring', stiffness: 120, damping: 14, delay: 0.15 * idx }}
+                    whileHover={{ y: -6 }}
+                  >
+                    <h4>{c.title}</h4>
+                    <p>{c.text}</p>
+                  </motion.div>
+                ))}
+              </div>
 
-          <div className="lb-about-cards">
-            {cards.map((c) => (
-              <motion.div key={c.title} className="lb-card" whileHover={{ y: -6 }} transition={{ type: 'spring', stiffness: 300 }}>
-                <h4>{c.title}</h4>
-                <p>{c.text}</p>
-              </motion.div>
-            ))}
-          </div>
-
-          <div className="lb-about-counters">
-            <Counter end={15} label="Years Exp" />
-            <Counter end={500} label="Projects Completed" />
-            <Counter end={50} label="Global Clients" />
+              <div className="lb-about-counters mt-4 d-flex justify-content-start">
+                <Counter end={15} label="Years Exp" />
+                <Counter end={500} label="Projects Completed" />
+                <Counter end={50} label="Global Clients" />
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -71,7 +76,7 @@ function Counter({ end = 0, label = '' }) {
   }, [end]);
 
   return (
-    <div className="lb-counter" ref={ref}>
+    <div className="lb-counter mr-3" ref={ref}>
       <div className="lb-counter-value">{value}{end >= 100 ? '+' : ''}</div>
       <div className="lb-counter-label">{label}</div>
     </div>
