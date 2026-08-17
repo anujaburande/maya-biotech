@@ -8,7 +8,6 @@ import Services from './components/Services';
 import Expertise from './components/Expertise';
 import Team from './components/Team';
 import WhyUs from './components/WhyUs';
-import Statistics from './components/Statistics';
 import BiotechVisualizer from './components/BiotechVisualizer';
 import FinalCTA from './components/FinalCTA';
 import Contact from './components/Contact';
@@ -42,7 +41,6 @@ function App() {
         <About />
         <Services />
         <Expertise />
-        <Statistics />
         <BiotechVisualizer />
         <WhyUs />
         <Team />
