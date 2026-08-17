@@ -25,3 +25,20 @@ $bp-wide: 1600px;
 
 // Example usage:
 // @include until($bp-tablet-portrait) { ... }
+
+// Project-specific responsive adjustments migrated here
+@include until(820px) {
+	.lb-hero-inner,
+	.lb-about-inner,
+	.lb-contact-inner,
+	.lb-expertise-inner {
+		flex-direction: column;
+		text-align: left;
+	}
+
+	.lb-hero-right {
+		text-align: left;
+	}
+	/* reduce vertical padding for mobile/tablet to keep sections compact */
+	.lb-section { padding: 40px 12px; }
+}
