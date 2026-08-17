@@ -7,6 +7,7 @@ import bg from '../assets/images/hero-section/innovating-bg.jpg';
 import hero1 from '../assets/images/hero-section/innovating-biotech-1.jpg';
 import hero3 from '../assets/images/banner-quality-trust.jpg';
 import hero2 from '../assets/images/banner-research.jpg';
+import heroVideo from '../assets/images/hero-bg.mp4';
 
 // Hero section with simple slider (3 slides)
 // - Left: heading and paragraph
@@ -77,6 +78,11 @@ export default function Hero({ onNavigate }) {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.6 }}
             >
+              {index === 0 && (
+                <video className="hero-video" autoPlay muted loop playsInline>
+                  <source src={heroVideo} type="video/mp4" />
+                </video>
+              )}
               {index === 0 && (
                 <>
                   <motion.img src={i1} alt="i1" className="img-fluid hero-pos hero-pos-1"
