@@ -1,0 +1,38 @@
+@import '_variables.scss';
+
+// Brand mixins
+@mixin primaryBrand {
+  background: $gradient;
+  color: #fff;
+}
+
+@mixin secondaryBrand {
+  background: $secondary-color;
+  color: #fff;
+  border: none;
+}
+
+// Typography mixins for consistent theme
+@mixin h2Heading {
+  font-size: 32px;
+  margin: 0 0 10px;
+  font-weight: 700;
+  color: $primary-color;
+  text-transform: uppercase;
+  line-height: 1.15;
+}
+
+@mixin subHeading($size: 18px, $weight: 600) {
+  font-size: $size;
+  font-weight: $weight;
+  margin: 0 0 8px;
+  line-height: 1.25;
+  color: inherit;
+}
+
+@mixin descText($size: 16px) {
+  font-size: $size;
+  margin: 0;
+  color: $description;
+  line-height: 1.6;
+}

@@ -107,8 +107,8 @@ body{
 .hero-pos-3{left:14%;bottom:14%;transform:translateY(0)}
 .lb-hero-copy h1{font-size:34px;margin:0 0 10px}
 .lb-hero-copy{ text-align:left }
-.lb-hero-copy h2{font-size:32px;margin:0 0 10px;font-weight:700; color:$primary-color;text-transform: uppercase;}
-.lb-hero-copy p{font-size:16px;margin:0;color:var(--muted)}
+.lb-hero-copy h2{ @include h2Heading }
+.lb-hero-copy p{ @include descText }
 
 .lb-btn-secondary{ @include secondaryBrand; padding:8px 14px; border-radius:8px; font-weight:600 }
 .lb-hero-controls{margin-top:16px}
@@ -124,7 +124,7 @@ body{
 .lb-about-counters{display:flex;gap:18px;margin-top:18px;align-items:center}
 .lb-counter{background:linear-gradient(180deg,rgba(255,255,255,0.98),#fff);padding:14px;border-radius:10px;min-width:140px;box-shadow:0 8px 20px rgba(0,0,0,0.04);text-align:left}
 .lb-counter-value{font-size:24px;font-weight:800;color:var(--accent)}
-.lb-counter-label{font-size:13px;color:var(--muted);margin-top:6px}
+.lb-counter-label{font-size:13px;color:#{$description};margin-top:6px}
 
 .lb-services-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
 .lb-service-card{background:var(--bg);padding:18px;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,0.06)}
@@ -174,11 +174,17 @@ body{
 .lb-nav-link:hover{transform:translateY(-2px);color:var(--primary)}
 .lb-cta,.lb-btn{transition:transform .12s ease, box-shadow .12s ease}
 .lb-cta:hover,.lb-btn:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,0,0,0.12)}
-.small-text{font-size:12px;color:var(--muted)}
+.small-text{font-size:12px;color:#{$description}}
+
+/* Make all paragraph text inside sections use the description color/spacing */
+.lb-section p{ @include descText }
+
+/* Ensure all main section headers (h2) use the same theme as hero */
+.lb-section .lb-section-header h2{ @include h2Heading }
 .lb-visual .visual-wrap{display:flex;gap:20px;align-items:center;justify-content:space-between}
 .helix{width:60%;height:160px}
 .visual-copy{width:36%}
-.visual-copy h3{margin:0}
+.visual-copy h3{margin:0; @include subHeading(20px,600) }
 
 /* Final CTA */
 .lb-cta-final{background:linear-gradient(90deg,var(--primary),var(--secondary));color:#fff;padding:40px 20px;border-radius:12px;margin-top:24px}
@@ -200,3 +206,8 @@ body{
   .lb-hero-inner,.lb-about-inner,.lb-contact-inner,.lb-expertise-inner{flex-direction:column;text-align:left}
   .lb-hero-right{text-align:left}
 }
+
+/* Footer styles */
+.lb-footer{background: $primary-color; color: #fff; padding: 28px 20px}
+.lb-footer a{color: #fff}
+.lb-footer .small-text{color: rgba(255,255,255,0.9)}
