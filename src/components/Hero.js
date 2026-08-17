@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import i1 from '../assets/images/hero-section/innovating-biotech-1.svg';
-import i2 from '../assets/images/hero-section/innovating-biotech-2.svg';
-import i3 from '../assets/images/hero-section/innovating-biotech-3.svg';
-import bg from '../assets/images/hero-section/innovating-bg.svg';
+import i1 from '../assets/images/hero-section/innovating-biotech-1.jpg';
+import i2 from '../assets/images/hero-section/innovating-biotech-2.jpg';
+import i3 from '../assets/images/hero-section/innovating-biotech-3.jpg';
+import bg from '../assets/images/hero-section/innovating-bg.jpg';
+import hero1 from '../assets/images/hero-section/innovating-biotech-1.jpg';
+import hero3 from '../assets/images/banner-quality-trust.jpg';
+import hero2 from '../assets/images/banner-research.jpg';
 
 // Hero section with simple slider (3 slides)
 // - Left: heading and paragraph
@@ -64,9 +67,9 @@ export default function Hero({ onNavigate }) {
         </div>
 
         <div className="lb-hero-right col-sm-12 col-md-6 col-lg-6">
-          <div className="hero-bg" style={{ backgroundImage: `url(${bg})` }}>
-            <AnimatePresence mode="wait">
-              <motion.div key={index} className="hero-small-images" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+          <AnimatePresence mode="wait">
+            {index === 0 && (
+              <motion.div key="small" className="hero-small-images" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
                 {[i1, i2, i3].map((src, i) => (
                   <motion.img
                     key={i}
@@ -79,8 +82,18 @@ export default function Hero({ onNavigate }) {
                   />
                 ))}
               </motion.div>
-            </AnimatePresence>
-          </div>
+            )}
+
+            {index === 1 && (
+              <motion.img key="one" src={hero2} alt="hero-2" className="img-fluid hero-large" initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -10 }} transition={{ duration: 0.5 }} />
+            )}
+
+            {index === 2 && (
+              <motion.div key="bg" className="hero-bg" style={{ backgroundImage: `url(${bg})` }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }}>
+                <motion.img src={hero3} alt="hero-3" className="img-fluid hero-large" initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6 }} />
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
     </section>
