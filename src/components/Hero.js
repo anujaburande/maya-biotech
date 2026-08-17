@@ -40,70 +40,70 @@ export default function Hero({ onNavigate }) {
   }, [slides.length]);
 
   return (
-    <section id="hero" className="lb-section lb-hero container">
-      <div className="lb-hero-inner row">
-        <div className="lb-hero-left col-sm-12 col-md-6 col-lg-6 ">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: 20 }}
-              transition={{ duration: 0.5 }}
-              className="lb-hero-copy"
-            >
-              <h2>{slides[index].title}</h2>
-              <p>{slides[index].text}</p>
-              <div className="mt-3">
-                <button className="lb-btn lb-btn-secondary" onClick={() => onNavigate && onNavigate('about')}>More details</button>
-              </div>
-            </motion.div>
-          </AnimatePresence>
+    <section id="hero" className="lb-section lb-hero ">
+      <div className="container">
+        {/* <video className="hero-video" autoPlay muted loop playsInline>
+          <source src={heroVideo} type="video/mp4" />
+        </video> */}
+        <div className="lb-hero-inner row">
+          <div className="lb-hero-left col-sm-12 col-md-6 col-lg-6 ">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 20 }}
+                transition={{ duration: 0.5 }}
+                className="lb-hero-copy"
+              >
+                <h2>{slides[index].title}</h2>
+                <p>{slides[index].text}</p>
+                <div className="mt-3">
+                  <button className="lb-btn lb-btn-secondary" onClick={() => onNavigate && onNavigate('about')}>More details</button>
+                </div>
+              </motion.div>
+            </AnimatePresence>
 
-          <div className="lb-hero-controls">
-            {slides.map((s, i) => (
-              <button key={s.title} className={`dot ${i === index ? 'active' : ''}`} onClick={() => setIndex(i)} />
-            ))}
+            <div className="lb-hero-controls">
+              {slides.map((s, i) => (
+                <button key={s.title} className={`dot ${i === index ? 'active' : ''}`} onClick={() => setIndex(i)} />
+              ))}
+            </div>
           </div>
-        </div>
 
-        <div className="lb-hero-right col-sm-12 col-md-6 col-lg-6">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={`slide-bg-${index}`}
-              className="hero-slide"
-              style={{ backgroundImage: `url(${index === 0 ? bg : index === 1 ? hero2 : hero3})` }}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              {index === 0 && (
-                <video className="hero-video" autoPlay muted loop playsInline>
-                  <source src={heroVideo} type="video/mp4" />
-                </video>
-              )}
-              {index === 0 && (
-                <>
-                  <motion.img src={i1} alt="i1" className="img-fluid hero-pos hero-pos-1"
-                    initial={{ opacity: 0, scale: 0.96 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.4, duration: 0.9, ease: 'easeOut' }}
-                  />
-                  <motion.img src={i2} alt="i2" className="img-fluid hero-pos hero-pos-2"
-                    initial={{ opacity: 0, scale: 0.96 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.8, duration: 0.9, ease: 'easeOut' }}
-                  />
-                  <motion.img src={i3} alt="i3" className="img-fluid hero-pos hero-pos-3"
-                    initial={{ opacity: 0, scale: 0.96 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 1.2, duration: 0.9, ease: 'easeOut' }}
-                  />
-                </>
-              )}
-            </motion.div>
-          </AnimatePresence>
+          <div className="lb-hero-right col-sm-12 col-md-6 col-lg-6">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={`slide-bg-${index}`}
+                className="hero-slide"
+                style={{ backgroundImage: `url(${index === 0 ? bg : index === 1 ? hero2 : hero3})` }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.6 }}
+              >
+                {index === 0 && (
+                  <>
+                    <motion.img src={i1} alt="i1" className="img-fluid hero-pos hero-pos-1"
+                      initial={{ opacity: 0, scale: 0.96 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 0.4, duration: 0.9, ease: 'easeOut' }}
+                    />
+                    <motion.img src={i2} alt="i2" className="img-fluid hero-pos hero-pos-2"
+                      initial={{ opacity: 0, scale: 0.96 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 0.8, duration: 0.9, ease: 'easeOut' }}
+                    />
+                    <motion.img src={i3} alt="i3" className="img-fluid hero-pos hero-pos-3"
+                      initial={{ opacity: 0, scale: 0.96 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 1.2, duration: 0.9, ease: 'easeOut' }}
+                    />
+                  </>
+                )}
+              </motion.div>
+            </AnimatePresence>
+          </div>
         </div>
       </div>
     </section>
