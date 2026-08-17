@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import hero1 from '../assets/images/hero-1.svg';
-import hero2 from '../assets/images/hero-2.svg';
-import hero3 from '../assets/images/hero-3.svg';
+import i1 from '../assets/images/hero-section/innovating-biotech-1.svg';
+import i2 from '../assets/images/hero-section/innovating-biotech-2.svg';
+import i3 from '../assets/images/hero-section/innovating-biotech-3.svg';
+import bg from '../assets/images/hero-section/innovating-bg.svg';
 
 // Hero section with simple slider (3 slides)
 // - Left: heading and paragraph
 // - Right: image
 // - Slides auto-advance and animate using `framer-motion`
-export default function Hero() {
+export default function Hero({ onNavigate }) {
   const slides = [
     {
       title: 'Innovating Biotech',
@@ -47,8 +48,11 @@ export default function Hero() {
               transition={{ duration: 0.5 }}
               className="lb-hero-copy"
             >
-              <h1>{slides[index].title}</h1>
+              <h2>{slides[index].title}</h2>
               <p>{slides[index].text}</p>
+              <div className="mt-3">
+                <button className="lb-btn lb-btn-secondary" onClick={() => onNavigate && onNavigate('about')}>More details</button>
+              </div>
             </motion.div>
           </AnimatePresence>
 
@@ -60,18 +64,23 @@ export default function Hero() {
         </div>
 
         <div className="lb-hero-right col-sm-12 col-md-6 col-lg-6">
-          <AnimatePresence mode="wait">
-            <motion.img
-              key={slides[index].img}
-              src={slides[index].img}
-              alt="hero"
-              className="img-fluid"
-              initial={{ opacity: 0, scale: 0.98 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 1.02 }}
-              transition={{ duration: 0.6 }}
-            />
-          </AnimatePresence>
+          <div className="hero-bg" style={{ backgroundImage: `url(${bg})` }}>
+            <AnimatePresence mode="wait">
+              <motion.div key={index} className="hero-small-images" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+                {[i1, i2, i3].map((src, i) => (
+                  <motion.img
+                    key={i}
+                    src={src}
+                    alt={`hero-small-${i}`}
+                    className="img-fluid hero-small"
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.15 + i * 0.15, duration: 0.5 }}
+                  />
+                ))}
+              </motion.div>
+            </AnimatePresence>
+          </div>
         </div>
       </div>
     </section>
