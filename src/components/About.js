@@ -16,7 +16,7 @@ export default function About() {
     <section id="about" className="lb-section lb-about">
       <div className="lb-about-inner">
         <motion.div className="lb-about-left" initial={{ x: -30, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.6 }}>
-          <img src={aboutImg} alt="about" />
+          <img src={aboutImg} alt="about" className="img-fluid" />
         </motion.div>
 
         <div className="lb-about-right">

@@ -35,9 +35,9 @@ export default function Hero() {
   }, [slides.length]);
 
   return (
-    <section id="hero" className="lb-section lb-hero">
-      <div className="lb-hero-inner">
-        <div className="lb-hero-left">
+    <section id="hero" className="lb-section lb-hero container">
+      <div className="lb-hero-inner row">
+        <div className="lb-hero-left col-sm-12 col-md-6 col-lg-6 ">
           <AnimatePresence mode="wait">
             <motion.div
               key={index}
@@ -59,12 +59,13 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="lb-hero-right">
+        <div className="lb-hero-right col-sm-12 col-md-6 col-lg-6">
           <AnimatePresence mode="wait">
             <motion.img
               key={slides[index].img}
               src={slides[index].img}
               alt="hero"
+              className="img-fluid"
               initial={{ opacity: 0, scale: 0.98 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 1.02 }}

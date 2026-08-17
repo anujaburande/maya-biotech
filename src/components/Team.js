@@ -29,7 +29,7 @@ export default function Team() {
           {members.map((m) => (
             <div className="col-sm-6 col-md-4" key={m.name}>
               <motion.div className="team-card" initial={{ y: 30, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.5 }} whileHover={{ scale: 1.03 }}>
-                <img src={m.img} alt={m.name} />
+                <img src={m.img} alt={m.name} className="img-fluid" />
                 <div className="team-info">
                   <h4>{m.name}</h4>
                   <p>{m.role}</p>
