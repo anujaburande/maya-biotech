@@ -82,17 +82,17 @@ export default function Hero({ onNavigate }) {
                   <motion.img src={i1} alt="i1" className="img-fluid hero-pos hero-pos-1"
                     initial={{ opacity: 0, scale: 0.96 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.12, duration: 0.45 }}
+                    transition={{ delay: 0.4, duration: 0.9, ease: 'easeOut' }}
                   />
                   <motion.img src={i2} alt="i2" className="img-fluid hero-pos hero-pos-2"
                     initial={{ opacity: 0, scale: 0.96 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.27, duration: 0.45 }}
+                    transition={{ delay: 0.8, duration: 0.9, ease: 'easeOut' }}
                   />
                   <motion.img src={i3} alt="i3" className="img-fluid hero-pos hero-pos-3"
                     initial={{ opacity: 0, scale: 0.96 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.42, duration: 0.45 }}
+                    transition={{ delay: 1.2, duration: 0.9, ease: 'easeOut' }}
                   />
                 </>
               )}
