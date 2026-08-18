@@ -16,10 +16,12 @@ export default function About() {
   useEffect(() => {
     const apply = () => {
       if (window.innerWidth <= 820) {
-        setXTargets([-20, 0, 20]);
+        // mobile: increase horizontal spread by ~90px
+        setXTargets([-110, 0, 110]);
         setYStart(-120);
       } else {
-        setXTargets([-60, 0, 60]);
+        // desktop: increase horizontal spread by ~90px
+        setXTargets([-150, 0, 150]);
         setYStart(-200);
       }
     };
@@ -37,20 +39,21 @@ export default function About() {
               <h2>About Maya Biotech</h2>
               <p>We combine research and ethics to build scalable biotech products.</p>
 
-              <div className="lb-about-cards d-flex justify-content-center">
+              <div className="lb-about-cards row justify-content-center">
                 {cards.map((c, idx) => (
-                  <motion.div
-                    key={c.title}
-                    className="lb-card mx-2"
-                    initial={{ y: yStart, x: 0, opacity: 0 }}
-                    whileInView={{ y: 0, x: xTargets[idx], opacity: 1 }}
-                    viewport={{ once: true, amount: 0.3 }}
-                    transition={{ duration: 0.9, ease: 'easeOut', delay: 0.06 * idx }}
-                    whileHover={{ y: -6 }}
-                  >
-                    <h4>{c.title}</h4>
-                    <p>{c.text}</p>
-                  </motion.div>
+                  <div key={c.title} className="col-12 col-sm-6 col-md-4 d-flex justify-content-center mb-3">
+                    <motion.div
+                      className="lb-card"
+                      initial={{ y: yStart, x: 0, opacity: 0 }}
+                      whileInView={{ y: 0, x: xTargets[idx], opacity: 1 }}
+                      viewport={{ once: true, amount: 0.3 }}
+                      transition={{ duration: 0.9, ease: 'easeOut', delay: 0.06 * idx }}
+                      whileHover={{ y: -6 }}
+                    >
+                      <h4>{c.title}</h4>
+                      <p>{c.text}</p>
+                    </motion.div>
+                  </div>
                 ))}
               </div>
 

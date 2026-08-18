@@ -41,4 +41,9 @@ $bp-wide: 1600px;
 	}
 	/* reduce vertical padding for mobile/tablet to keep sections compact */
 	.lb-section { padding: 40px 12px; }
+
+	/* About card responsive sizing */
+	.lb-section .lb-card { width: 160px; height: 160px; max-width: 160px; }
+	.lb-section .lb-card h4 { font-size: 16px; }
+	.lb-section .lb-card > p { font-size: 12px; }
 }
