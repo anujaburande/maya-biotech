@@ -41,12 +41,10 @@ export default function Expertise() {
                     <React.Fragment key={it.id}>
                       <motion.div
                         className="connector"
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: false, amount: 0.2 }}
+                        // keep visible and continuously animate vertical offset
                         animate={{ y: yAnim }}
                         transition={{ duration: 4 + idx * 0.3, repeat: Infinity, ease: 'easeInOut', delay: idx * 0.08 }}
-                        style={{ left: '50%', top: '50%', width: `${distance}%`, transformOrigin: 'left center', transform: `translate(-0%, -50%) rotate(${angles[idx]}deg)` }}
+                        style={{ left: '50%', top: '50%', width: `${distance}%`, transformOrigin: 'left center', transform: `translate(-0%, -50%) rotate(${angles[idx]}deg)`, opacity: 1 }}
                       >
                         <span className="connector-arrow" />
                       </motion.div>
@@ -54,9 +52,7 @@ export default function Expertise() {
                       <motion.div
                         className="expertise-badge orbit-item"
                         style={{ left: `${left}%`, top: `${top}%`, transform: 'translate(-50%, -50%)' }}
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: false, amount: 0.3 }}
+                        // remain visible and continuously animate Y offset
                         animate={{ y: yAnim }}
                         transition={{ duration: 4 + idx * 0.3, repeat: Infinity, ease: 'easeInOut', delay: idx * 0.08 }}
                       >
