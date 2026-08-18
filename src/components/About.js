@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import aboutImg from '../assets/images/about.jpg';
+// import aboutImg from '../assets/images/about.jpg';
 
 // About section — left image is provided via CSS background; cards animate down on scroll
 export default function About() {
@@ -10,8 +10,26 @@ export default function About() {
     { title: 'Values', text: 'Integrity, innovation, collaboration.' }
   ];
 
+  const [xTargets, setXTargets] = useState([-60, 0, 60]);
+  const [yStart, setYStart] = useState(-200);
+
+  useEffect(() => {
+    const apply = () => {
+      if (window.innerWidth <= 820) {
+        setXTargets([-20, 0, 20]);
+        setYStart(-120);
+      } else {
+        setXTargets([-60, 0, 60]);
+        setYStart(-200);
+      }
+    };
+    apply();
+    window.addEventListener('resize', apply);
+    return () => window.removeEventListener('resize', apply);
+  }, []);
+
   return (
-    <section id="about" className="lb-section lb-about" style={{ backgroundImage: `url(${aboutImg})` }}>
+    <section id="about" className="lb-section lb-about">
       <div className="lb-about-inner container">
         <div className="row">
           <div className="col-12 col-md-12">
@@ -19,27 +37,22 @@ export default function About() {
               <h2>About Maya Biotech</h2>
               <p>We combine research and ethics to build scalable biotech products.</p>
 
-              <motion.div
-                className="lb-about-cards d-flex justify-content-center"
-                initial={{ y: -200, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                viewport={{ once: true, amount: 0.25 }}
-                transition={{ duration: 0.9, ease: 'easeOut' }}
-              >
+              <div className="lb-about-cards d-flex justify-content-center">
                 {cards.map((c, idx) => (
                   <motion.div
                     key={c.title}
                     className="lb-card mx-2"
-                    initial={{ x: 0 }}
-                    animate={{ x: idx === 0 ? -16 : idx === 2 ? 16 : 0 }}
-                    transition={{ duration: 0.6, ease: 'easeOut' }}
+                    initial={{ y: yStart, x: 0, opacity: 0 }}
+                    whileInView={{ y: 0, x: xTargets[idx], opacity: 1 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    transition={{ duration: 0.9, ease: 'easeOut', delay: 0.06 * idx }}
                     whileHover={{ y: -6 }}
                   >
                     <h4>{c.title}</h4>
                     <p>{c.text}</p>
                   </motion.div>
                 ))}
-              </motion.div>
+              </div>
 
               <div className="lb-about-counters mt-4 d-flex justify-content-start">
                 <Counter end={15} label="Years Exp" />

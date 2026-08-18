@@ -365,6 +365,7 @@ body {
   background-repeat: no-repeat;
   background-size: contain;
   background-position: left center;
+  padding-left: 40px;
 }
 
 .lb-about-cards {
@@ -373,7 +374,7 @@ body {
   margin-top: 12px
 }
 
-.lb-card {
+.lb-section .lb-card  {
     padding: 12px;
     border-radius: 8px;
     flex: 1 1;
@@ -385,12 +386,13 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    max-width: 240px;
   h4{
     text-transform: uppercase;
     color:$white;
     font-size: 24px;
   }
-  p{
+  > p{
     font-size: 14px;
     color:$white;
   }
