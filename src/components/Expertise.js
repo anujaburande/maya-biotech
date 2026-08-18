@@ -40,16 +40,6 @@ export default function Expertise() {
                   return (
                     <React.Fragment key={it.id}>
                       <motion.div
-                        className="connector"
-                        // keep visible and continuously animate vertical offset
-                        animate={{ y: yAnim }}
-                        transition={{ duration: 4 + idx * 0.3, repeat: Infinity, ease: 'easeInOut', delay: idx * 0.08 }}
-                        style={{ left: '50%', top: '50%', width: `${distance}%`, transformOrigin: 'left center', transform: `translate(-0%, -50%) rotate(${angles[idx]}deg)`, opacity: 1 }}
-                      >
-                        <span className="connector-arrow" />
-                      </motion.div>
-
-                      <motion.div
                         className="expertise-badge orbit-item"
                         style={{ left: `${left}%`, top: `${top}%`, transform: 'translate(-50%, -50%)' }}
                         // remain visible and continuously animate Y offset
@@ -64,9 +54,10 @@ export default function Expertise() {
               })()}
             </div>
           </div>
-        </div>
 
-        <div className="lb-expertise-right">
+          </div>
+
+          <div className="lb-expertise-right">
           <h2>Our Expertise</h2>
           <p>Deep domain knowledge across multiple biotech disciplines, from lab research to regulatory strategy. We combine scientific rigor with practical implementation to support product development and clinical validation.</p>
         </div>
