@@ -468,9 +468,10 @@ body {
   display: flex;
   gap: 24px;
   align-items: center;
-  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.06), 0 10px 30px rgba(0, 0, 0, 0.06);
   padding: 30px;
-  border-radius: 8px
+  border-radius: 8px;
+  background: transparent;
+  box-shadow: none;
 }
 
 .lb-expertise-left {
@@ -486,7 +487,7 @@ body {
 
 /* Expertise badges */
 .lb-expertise-right { display:flex; flex-direction:column; gap:18px; align-items:flex-start; justify-content:center }
-.expertise-badge { background: linear-gradient(180deg, rgba(255,255,255,0.98), #fff); padding:14px 22px; border-radius:10px; box-shadow:0 10px 30px rgba(0,0,0,0.06); font-weight:700; color: $primary-color }
+.expertise-badge { background: transparent; padding:14px 22px; border-radius:10px; box-shadow:none; font-weight:700; color: $primary-color }
 
 @include until(820px) {
   .lb-expertise-inner { flex-direction: column; text-align:left }
@@ -505,10 +506,16 @@ body {
 .orbit-item.expertise-badge { min-width: 140px; text-align:center }
 
 /* connector (line from center to badge) */
-.connector { position: absolute; height: 2px; background: rgba(255,255,255,0.55); border-radius:2px; transform-origin: left center }
-.connector .connector-arrow { position: absolute; right: -6px; top: 50%; transform: translateY(-50%); width: 12px; height: 12px; background: #fff; clip-path: polygon(50% 0, 0% 100%, 100% 100%); opacity: 0.95 }
+.connector { position: absolute; height: 2px; background: rgba($primary-color, 0.14); border-radius:2px; transform-origin: left center }
+.connector .connector-arrow { position: absolute; right: -6px; top: 50%; transform: translateY(-50%); width: 12px; height: 12px; background: $primary-color; clip-path: polygon(50% 0, 0% 100%, 100% 100%); opacity: 0.95 }
 
 .expertise-badge-inner { padding:10px 18px; background: #fff; border-radius:10px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); color: $primary-color; font-weight:700 }
+
+/* Section background: use brand gradient and remove white panel */
+.lb-expertise { background: var(--brand-gradient); border-radius: 12px; padding: 30px 0 }
+
+.lb-expertise-right h2 { color: #fff }
+.lb-expertise-right p { color: rgba(255,255,255,0.9) }
 
 @include until(600px) {
   .expertise-orbit { width: 220px; height: 220px }
