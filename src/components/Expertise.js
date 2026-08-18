@@ -2,30 +2,37 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 // Expertise section
-// - Left shows an animated logo/mark
-// - Right lists expertise items
-// - Container has subtle shadow from top and bottom
+// - Left: title + description
+// - Right: animated expertise badges (vertical stack) that float up/down slowly
 export default function Expertise() {
-  const items = ['Molecular Biology', 'Bioinformatics', 'Clinical Research', 'Regulatory Strategy'];
+  const items = [
+    { id: 'molecular', label: 'Molecular Biology' },
+    { id: 'bioinfo', label: 'Bioinformatics' },
+    { id: 'clinical', label: 'Clinical Research' },
+    { id: 'regulatory', label: 'Regulatory Strategy' }
+  ];
 
   return (
     <section id="expertise" className="lb-section lb-expertise">
       <div className="lb-expertise-inner">
-        <motion.div className="lb-expertise-left" initial={{ rotate: 0 }} whileInView={{ rotate: 360 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}>
-          <svg width="120" height="120" viewBox="0 0 100 100">
-            <circle cx="50" cy="50" r="40" fill="#6c63ff" opacity="0.9" />
-            <text x="50" y="55" fontSize="16" fill="#fff" textAnchor="middle">MB</text>
-          </svg>
-        </motion.div>
+        <div className="lb-expertise-left">
+          <h2>Our Expertise</h2>
+          <p>Deep domain knowledge across multiple biotech disciplines, from lab research to regulatory strategy. We combine scientific rigor with practical implementation to support product development and clinical validation.</p>
+        </div>
 
         <div className="lb-expertise-right">
-          <h2>Our Expertise</h2>
-          <p>Deep domain knowledge across multiple biotech disciplines.</p>
-          <ul>
-            {items.map((it) => (
-              <li key={it}>{it}</li>
-            ))}
-          </ul>
+          {items.map((it, idx) => (
+            <motion.div
+              className="expertise-badge"
+              key={it.id}
+              initial={{ opacity: 0, y: -40 }}
+              whileInView={{ opacity: 1, y: [0, -30, 0] }}
+              viewport={{ once: false, amount: 0.3 }}
+              transition={{ duration: 4 + idx * 0.4, repeat: Infinity, ease: 'easeInOut', repeatType: 'loop', delay: idx * 0.15 }}
+            >
+              {it.label}
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

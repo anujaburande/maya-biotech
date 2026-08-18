@@ -418,6 +418,29 @@ body {
   color: var(--accent)
 }
 
+/* Services flip cards */
+.lb-services .service-card { perspective: 1200px; width: 240px; }
+.service-card-inner { position: relative; width: 240px; height: 240px; transform-style: preserve-3d; transition: transform 0.8s; }
+.service-card.is-flipped .service-card-inner { transform: rotateY(180deg); }
+.service-card-front, .service-card-back { position: absolute; inset: 0; backface-visibility: hidden; border-radius: 12px; overflow: hidden; display:flex; align-items:center; justify-content:center }
+.service-card-front { background-size: cover; background-position: center; box-shadow: 0 10px 30px rgba(0,0,0,0.12); }
+.service-card-label{ background: rgba(255,255,255,0.9); padding:12px 20px; border-radius:8px; font-weight:700; color: $primary-color }
+.service-card-back { background: #fff; transform: rotateY(180deg); box-shadow: 0 10px 30px rgba(0,0,0,0.06); }
+.service-card-back-inner { padding: 18px; text-align:center }
+.service-card-back h4{ margin:0 0 6px }
+.service-card-back p{ margin:0; color: $description }
+
+/* Hover flip for non-touch devices */
+@media (hover: hover) and (pointer: fine) {
+  .service-card:hover .service-card-inner { transform: rotateY(180deg); }
+}
+
+/* responsive tweaks */
+@include until(820px) {
+  .lb-services .service-card, .service-card-inner { width: 160px; }
+  .service-card-front, .service-card-back { border-radius: 10px }
+}
+
 .lb-counter-label {
   font-size: 13px;
   color:#{$description};
@@ -459,6 +482,17 @@ body {
 
 .lb-expertise-right {
   flex: 1
+}
+
+/* Expertise badges */
+.lb-expertise-right { display:flex; flex-direction:column; gap:18px; align-items:flex-start; justify-content:center }
+.expertise-badge { background: linear-gradient(180deg, rgba(255,255,255,0.98), #fff); padding:14px 22px; border-radius:10px; box-shadow:0 10px 30px rgba(0,0,0,0.06); font-weight:700; color: $primary-color }
+
+@include until(820px) {
+  .lb-expertise-inner { flex-direction: column; text-align:left }
+  .lb-expertise-left { margin-bottom: 18px; }
+  .lb-expertise-right { align-items:center }
+  .expertise-badge { width:160px; text-align:center }
 }
 
 .lb-contact-inner {
