@@ -15,13 +15,22 @@ export default function About() {
 
   useEffect(() => {
     const apply = () => {
-      if (window.innerWidth <= 820) {
-        // mobile: increase horizontal spread by ~90px
-        setXTargets([-110, 0, 110]);
+      const w = window.innerWidth;
+      if (w <= 480) {
+        // small phones
+        setXTargets([-30, 0, 30]);
+        setYStart(-100);
+      } else if (w <= 820) {
+        // larger phones / small tablets
+        setXTargets([-60, 0, 60]);
         setYStart(-120);
+      } else if (w <= 1200) {
+        // laptops / medium screens - reduced spread
+        setXTargets([-90, 0, 90]);
+        setYStart(-160);
       } else {
-        // desktop: increase horizontal spread by ~90px
-        setXTargets([-150, 0, 150]);
+        // large desktops
+        setXTargets([-120, 0, 120]);
         setYStart(-200);
       }
     };

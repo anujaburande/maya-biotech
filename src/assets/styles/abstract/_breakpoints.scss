@@ -47,3 +47,12 @@ $bp-wide: 1600px;
 	.lb-section .lb-card h4 { font-size: 16px; }
 	.lb-section .lb-card > p { font-size: 12px; }
 }
+
+// Medium screens (tablets / small laptops)
+@include from(821px) {
+  @include until(1200px) {
+    .lb-section .lb-card { width: 200px; height: 200px; max-width: 200px; }
+    .lb-section .lb-card h4 { font-size: 18px; }
+    .lb-section .lb-card > p { font-size: 13px; }
+  }
+}
