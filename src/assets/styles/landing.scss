@@ -495,6 +495,20 @@ body {
   .expertise-badge { width:160px; text-align:center }
 }
 
+/* Orbit styles */
+.expertise-orbit { width: 300px; height: 300px; position: relative; display: flex; align-items: center; justify-content: center }
+.expertise-orbit-inner { position: absolute; inset: 0; }
+.expertise-center { position: absolute; left:50%; top:50%; transform: translate(-50%, -50%); width:100px; height:100px; border-radius:50%; display:flex; align-items:center; justify-content:center; background: $primary-color; box-shadow: 0 10px 30px rgba(0,0,0,0.12) }
+.expertise-center-mark { color: #fff; font-weight:800; font-size:32px }
+.orbit-item { position: absolute; }
+.orbit-item.expertise-badge { min-width: 140px; text-align:center }
+
+@include until(600px) {
+  .expertise-orbit { width: 220px; height: 220px }
+  .expertise-center { width:80px; height:80px }
+  .orbit-item.expertise-badge { min-width: 120px }
+}
+
 .lb-contact-inner {
   max-width: 1100px;
   margin: 0 auto;
