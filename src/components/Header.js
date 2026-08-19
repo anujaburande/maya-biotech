@@ -69,11 +69,11 @@ export default function Header({ onNavigate, theme, toggleTheme }) {
               ))}
             </ul>
 
-            <div className="d-flex align-items-center">
+            {/* <div className="d-flex align-items-center">
               <button className="btn btn-link text-decoration-none theme-toggle" onClick={() => { toggleTheme(); setExpanded(false); }} aria-label="Toggle theme">
                 {theme === 'dark' ? '☀️' : '🌙'}
               </button>
-            </div>
+            </div> */}
           </div>
         </div>
       </nav>

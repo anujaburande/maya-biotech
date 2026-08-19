@@ -178,7 +178,7 @@ body {
   background-size: cover;
 
   &-overlay {
-    background-color: rgba(255, 255, 255, .8);
+    background-color: rgba(255, 255, 255, .7);
     position: absolute;
     top: 0;
     left: 0;
@@ -431,7 +431,7 @@ body {
 
 /* responsive tweaks */
 @include until(820px) {
-  .lb-services .service-card, .service-card-inner { width: 100%; }
+  .lb-services .service-card, .service-card-inner { width: 100%;         margin-bottom: 16px;}
   .service-card-front, .service-card-back { border-radius: 10px }
 }
 
@@ -663,25 +663,64 @@ body {
   font-weight: 600;
 }
 
+.lb-whyus {
+  background: linear-gradient(180deg, rgba(79, 123, 208, 0.04), rgba(140, 113, 223, 0.04));
+}
+
 .lb-whyus-head {
   text-align: center;
-  margin-bottom: 18px
+  margin-bottom: 26px;
+
+  h2 {
+    margin-bottom: 10px;
+  }
+
+  p {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+}
+
+.lb-whyus-body {
+  align-items: stretch;
+}
+
+.lb-milestones {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
 }
 
 .lb-milestone {
-  background: var(--bg);
-  padding: 14px;
-  border-radius: 8px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
- margin-bottom: 24px;
+  position: relative;
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  padding: 18px 18px 18px 16px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(79, 123, 208, 0.08);
+  box-shadow: 0 16px 35px rgba(38, 58, 92, 0.08);
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 5px;
+    background: linear-gradient(180deg, var(--primary), var(--secondary));
+    border-radius: 999px;
+  }
 }
 
 .lb-milestone .year-progress {
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  min-width: 76px;
+  min-width: 86px;
   gap: 8px;
+  position: relative;
+  z-index: 1;
 }
 
 .lb-milestone .year {
@@ -712,19 +751,71 @@ body {
   background: linear-gradient(90deg, var(--primary), var(--secondary));
 }
 
+.lb-milestone .txt {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  font-weight: 600;
+  color: var(--fg);
+  line-height: 1.5;
+}
+
+.lb-unique {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
 .lb-unique-item {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), $white);
-  padding: 12px;
-  border-radius: 8px
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 18px 20px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(79, 123, 208, 0.96), rgba(140, 113, 223, 0.9));
+  box-shadow: 0 18px 32px rgba(79, 123, 208, 0.14);
+  color: $white;
+  min-height: 120px;
+}
+
+.lb-unique-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.lb-unique-copy {
+  flex: 1;
+
+  h4 {
+    margin: 0 0 8px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: $white;
+  }
+
+  p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.82);
+    line-height: 1.5;
+  }
 }
 
 /* Team */
 .lb-team .container {
-  text-align: center
-}
-.lb-team-head {
-  margin-bottom: 30px;
-  .team-card {
+  text-align: center;
+  .lb-team-head {
+    margin-bottom: 30px;
+  
+  }
+   .team-card {
     background: var(--bg);
     padding: 12px;
     border-radius: 10px;
@@ -744,6 +835,7 @@ body {
     }
   }
 }
+
 
 
 .team-card img {
