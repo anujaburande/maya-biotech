@@ -7,7 +7,6 @@ import bg from '../assets/images/hero-section/innovating-bg.jpg';
 import hero1 from '../assets/images/hero-section/innovating-biotech-1.jpg';
 import hero3 from '../assets/images/banner-quality-trust.jpg';
 import hero2 from '../assets/images/banner-research.jpg';
-import heroVideo from '../assets/images/hero-bg.mp4';
 
 // Hero section with simple slider (3 slides)
 // - Left: heading and paragraph
