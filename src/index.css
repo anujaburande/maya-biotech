@@ -1,0 +1,5 @@
+/* Placeholder index.css to satisfy any imports left from CRA templates.
+   Project uses SCSS; keep this minimal file so webpack won't fail resolving it.
+*/
+html, body, #root { height: 100%; }
+body { margin: 0; font-family: Inter, system-ui, Arial, sans-serif; }

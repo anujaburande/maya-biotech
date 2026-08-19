@@ -1,0 +1,58 @@
+// Breakpoints for portrait and landscape orientations
+$bp-phone-portrait: 320px;
+$bp-phone-landscape: 480px;
+$bp-phablet: 600px;
+$bp-tablet-portrait: 768px;
+$bp-tablet-landscape: 900px;
+$bp-small-laptop: 1024px;
+$bp-laptop: 1200px;
+$bp-desktop: 1400px;
+$bp-wide: 1600px;
+
+// Orientation helpers
+@mixin portrait { @media (orientation: portrait) { @content; } }
+@mixin landscape { @media (orientation: landscape) { @content; } }
+
+// Range helpers
+@mixin until($width) { @media (max-width: $width) { @content; } }
+@mixin from($width) { @media (min-width: $width) { @content; } }
+
+// Device specific
+@mixin phone-portrait { @media (min-width: $bp-phone-portrait) and (max-width: $bp-phone-landscape) and (orientation: portrait) { @content; } }
+@mixin phone-landscape { @media (min-width: $bp-phone-landscape) and (max-width: $bp-phablet) and (orientation: landscape) { @content; } }
+@mixin tablet-portrait { @media (min-width: $bp-tablet-portrait) and (max-width: $bp-tablet-landscape) and (orientation: portrait) { @content; } }
+@mixin tablet-landscape { @media (min-width: $bp-tablet-landscape) and (max-width: $bp-small-laptop) and (orientation: landscape) { @content; } }
+
+// Example usage:
+// @include until($bp-tablet-portrait) { ... }
+
+// Project-specific responsive adjustments migrated here
+@include until(820px) {
+	.lb-hero-inner,
+	.lb-about-inner,
+	.lb-contact-inner,
+	.lb-expertise-inner {
+		flex-direction: column;
+		text-align: left;
+	}
+
+	.lb-hero-right {
+		text-align: left;
+	}
+	/* reduce vertical padding for mobile/tablet to keep sections compact */
+	.lb-section { padding: 40px 12px; }
+
+	/* About card responsive sizing */
+	.lb-section .lb-card { width: 160px; height: 160px; max-width: 160px; }
+	.lb-section .lb-card h4 { font-size: 16px; }
+	.lb-section .lb-card > p { font-size: 12px; }
+}
+
+// Medium screens (tablets / small laptops)
+@include from(821px) {
+  @include until(1200px) {
+    .lb-section .lb-card { width: 200px; height: 200px; max-width: 200px; }
+    .lb-section .lb-card h4 { font-size: 18px; }
+    .lb-section .lb-card > p { font-size: 13px; }
+  }
+}

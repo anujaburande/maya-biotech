@@ -6,6 +6,10 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Services from './components/Services';
 import Expertise from './components/Expertise';
+import Team from './components/Team';
+import WhyUs from './components/WhyUs';
+import BiotechVisualizer from './components/BiotechVisualizer';
+import FinalCTA from './components/FinalCTA';
 import Contact from './components/Contact';
 
 // Root App: assembles the landing page sections and provides theme + smooth scroll
@@ -33,10 +37,14 @@ function App() {
       <Header onNavigate={handleNavigate} theme={theme} toggleTheme={toggleTheme} />
 
       <main>
-        <Hero />
+        <Hero onNavigate={handleNavigate} />
         <About />
         <Services />
         <Expertise />
+        <BiotechVisualizer />
+        <WhyUs />
+        <Team />
+        <FinalCTA onContact={() => handleNavigate('contact')} />
         <Contact />
       </main>
     </div>

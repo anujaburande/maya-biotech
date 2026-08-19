@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
-import FloatingThemeToggle from './FloatingThemeToggle';
+import React, { useState, useEffect } from 'react';
 
 // Header component
-// - Renders logo, menus and simple submenus
-// - Calls `onNavigate(id)` when a menu is clicked to perform JS smooth scroll
-// - Receives `theme` and `toggleTheme` to control the light/dark mode
+// - Uses Bootstrap navbar markup for responsive navigation
+// - Tracks scroll to add `.scrolled` and to highlight active section
 export default function Header({ onNavigate, theme, toggleTheme }) {
   const [openSubmenu, setOpenSubmenu] = useState(null);
+  const [scrolled, setScrolled] = useState(false);
+  const [active, setActive] = useState('hero');
+  const [expanded, setExpanded] = useState(false);
 
   const menus = [
     { id: 'hero', label: 'Home' },
@@ -16,45 +17,66 @@ export default function Header({ onNavigate, theme, toggleTheme }) {
     { id: 'contact', label: 'Contact' }
   ];
 
+  useEffect(() => {
+    const onScroll = () => {
+      const threshold = document.documentElement.scrollHeight * 0.003; // 0.3%
+      setScrolled(window.scrollY > threshold);
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    const sections = Array.from(document.querySelectorAll('section[id]'));
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) setActive(entry.target.id);
+      });
+    }, { threshold: 0.45 });
+    sections.forEach((s) => obs.observe(s));
+
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      obs.disconnect();
+    };
+  }, []);
+
+  function onNavClick(id) {
+    onNavigate(id);
+    setActive(id);
+    setExpanded(false);
+  }
+
   return (
-    <header className="lb-header">
-      <div className="lb-header-inner">
-        <div className="lb-logo" onClick={() => onNavigate('hero')}>
-          <div className="lb-logo-mark">MB</div>
-          <div className="lb-logo-text">Maya Biotech</div>
-        </div>
+    <header className={`lb-header ${scrolled ? 'scrolled' : ''}`}>
+      <nav className="navbar navbar-expand-md">
+        <div className="container lb-header-inner">
+          <a className="navbar-brand d-flex align-items-center" href="#" onClick={(e) => { e.preventDefault(); onNavClick('hero'); }}>
+            <div className="lb-logo-mark">MB</div>
+            <div className="lb-logo-text ms-2">Maya Biotech</div>
+          </a>
 
-        <nav className="lb-nav">
-          {menus.map((m) => (
-            <div
-              key={m.id}
-              className="lb-nav-item"
-              onMouseEnter={() => setOpenSubmenu(m.id)}
-              onMouseLeave={() => setOpenSubmenu(null)}
-            >
-              <button className="lb-nav-link" onClick={() => onNavigate(m.id)}>
-                {m.label}
+          <button className="navbar-toggler" type="button" aria-label="Toggle navigation" onClick={() => setExpanded((s) => !s)}>
+            <span className="navbar-toggler-icon" />
+          </button>
+
+          <div className={`collapse navbar-collapse ${expanded ? 'show' : ''}`} id="lbNavbar">
+            <ul className="navbar-nav mb-2 mb-md-0 ms-auto me-2">
+              {menus.map((m) => (
+                <li className="nav-item" key={m.id} onMouseEnter={() => setOpenSubmenu(m.id)} onMouseLeave={() => setOpenSubmenu(null)}>
+                  <a className={`nav-link ${active === m.id ? 'active' : ''}`} href={`#${m.id}`} onClick={(e) => { e.preventDefault(); onNavClick(m.id); }}>
+                    {m.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+
+            {/* <div className="d-flex align-items-center">
+              <button className="btn btn-link text-decoration-none theme-toggle" onClick={() => { toggleTheme(); setExpanded(false); }} aria-label="Toggle theme">
+                {theme === 'dark' ? '☀️' : '🌙'}
               </button>
-              {m.submenu && openSubmenu === m.id && (
-                <div className="lb-submenu">
-                  {m.submenu.map((s) => (
-                    <button key={s} className="lb-submenu-item" onClick={() => alert(`${s} clicked`)}>
-                      {s}
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
-          ))}
-        </nav>
-
-        <div className="lb-header-actions">
-          <button className="lb-cta" onClick={() => onNavigate('contact')}>Get in touch</button>
+            </div> */}
+          </div>
         </div>
-      </div>
-
-      {/* Floating theme toggle placed here so it's always available with header markup */}
-      <FloatingThemeToggle theme={theme} toggleTheme={toggleTheme} />
+      </nav>
     </header>
   );
 }
