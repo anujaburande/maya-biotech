@@ -48,7 +48,7 @@ export default function Header({ onNavigate, theme, toggleTheme }) {
   return (
     <header className={`lb-header ${scrolled ? 'scrolled' : ''}`}>
       <nav className="navbar navbar-expand-md">
-        <div className="container-fluid lb-header-inner">
+        <div className="container lb-header-inner">
           <a className="navbar-brand d-flex align-items-center" href="#" onClick={(e) => { e.preventDefault(); onNavClick('hero'); }}>
             <div className="lb-logo-mark">MB</div>
             <div className="lb-logo-text ms-2">Maya Biotech</div>
@@ -59,7 +59,7 @@ export default function Header({ onNavigate, theme, toggleTheme }) {
           </button>
 
           <div className={`collapse navbar-collapse ${expanded ? 'show' : ''}`} id="lbNavbar">
-            <ul className="navbar-nav me-auto mb-2 mb-md-0">
+            <ul className="navbar-nav mb-2 mb-md-0 ms-auto me-2">
               {menus.map((m) => (
                 <li className="nav-item" key={m.id} onMouseEnter={() => setOpenSubmenu(m.id)} onMouseLeave={() => setOpenSubmenu(null)}>
                   <a className={`nav-link ${active === m.id ? 'active' : ''}`} href={`#${m.id}`} onClick={(e) => { e.preventDefault(); onNavClick(m.id); }}>

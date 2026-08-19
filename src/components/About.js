@@ -12,26 +12,31 @@ export default function About() {
 
   const [xTargets, setXTargets] = useState([-60, 0, 60]);
   const [yStart, setYStart] = useState(-200);
+  const [isStacked, setIsStacked] = useState(false);
 
   useEffect(() => {
     const apply = () => {
       const w = window.innerWidth;
       if (w <= 480) {
-        // small phones
-        setXTargets([-30, 0, 30]);
+        // small phones: stacked layout — no horizontal spread, animate sequentially
+        setXTargets([0, 0, 0]);
         setYStart(-100);
+        setIsStacked(true);
       } else if (w <= 820) {
         // larger phones / small tablets
-        setXTargets([-60, 0, 60]);
+        setXTargets([-30, 0, 30]);
         setYStart(-120);
+        setIsStacked(false);
       } else if (w <= 1200) {
         // laptops / medium screens - reduced spread
-        setXTargets([-90, 0, 90]);
+        setXTargets([-60, 0, 60]);
         setYStart(-160);
+        setIsStacked(false);
       } else {
         // large desktops
-        setXTargets([-120, 0, 120]);
+        setXTargets([-80, 0, 80]);
         setYStart(-200);
+        setIsStacked(false);
       }
     };
     apply();
@@ -43,20 +48,20 @@ export default function About() {
     <section id="about" className="lb-section lb-about">
       <div className="lb-about-inner container">
         <div className="row">
-          <div className="col-12 col-md-12">
+          <div className="col-sm-12 col-md-12 col-lg-12">
             <div className="lb-about-right">
               <h2>About Maya Biotech</h2>
               <p>We combine research and ethics to build scalable biotech products.</p>
 
               <div className="lb-about-cards row justify-content-center">
                 {cards.map((c, idx) => (
-                  <div key={c.title} className="col-12 col-sm-6 col-md-4 d-flex justify-content-center mb-3">
+                  <div key={c.title} className="col-sm-6 col-md-4 d-flex justify-content-center mb-3">
                     <motion.div
                       className="lb-card"
                       initial={{ y: yStart, x: 0, opacity: 0 }}
                       whileInView={{ y: 0, x: xTargets[idx], opacity: 1 }}
                       viewport={{ once: true, amount: 0.3 }}
-                      transition={{ duration: 0.9, ease: 'easeOut', delay: 0.06 * idx }}
+                      transition={{ duration: 0.9, ease: 'easeOut', delay: (isStacked ? 0.18 : 0.06) * idx }}
                       whileHover={{ y: -6 }}
                     >
                       <h4>{c.title}</h4>
@@ -66,13 +71,29 @@ export default function About() {
                 ))}
               </div>
 
-              <div className="lb-about-counters mt-4 d-flex justify-content-start">
-                <Counter end={15} label="Years Exp" />
-                <Counter end={500} label="Projects Completed" />
-                <Counter end={50} label="Global Clients" />
-              </div>
+
             </div>
           </div>
+          <div className="col-sm-12 col-md-12 col-lg-12">
+              <div className="row mt-5">
+                <div className="col-sm-12 col-md-3 col-lg-3">
+                  <div className="lb-about-counters ">
+                    <Counter end={15} label="Years Exp" />
+                   
+                  </div>
+                </div>
+                <div className="col-sm-12 col-md-3 col-lg-3">
+                   <Counter end={500} label="Projects Completed" />
+                </div>
+                <div className="col-sm-12 col-md-3 col-lg-3">
+                   <Counter end={50} label="Global Clients" />
+                </div>
+                <div className="col-sm-12 col-md-3 col-lg-3">
+                   <Counter end={25} label="Experties" />
+                </div>
+              </div>
+          </div>
+          
         </div>
       </div>
     </section>
@@ -108,8 +129,8 @@ function Counter({ end = 0, label = '' }) {
 
   return (
     <div className="lb-counter mr-3" ref={ref}>
-      <div className="lb-counter-value">{value}{end >= 100 ? '+' : ''}</div>
-      <div className="lb-counter-label">{label}</div>
+      <h3 className="lb-counter-value">{value}{end >= 100 ? '+' : ''}</h3>
+      <h6 className="lb-counter-label">{label}</h6>
     </div>
   );
 }

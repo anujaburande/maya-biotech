@@ -413,8 +413,8 @@ body {
 }
 
 /* Services flip cards */
-.lb-services .service-card { perspective: 1200px; width: 240px; }
-.service-card-inner { position: relative; width: 240px; height: 240px; transform-style: preserve-3d; transition: transform 0.8s; }
+.lb-services .service-card {  }
+.service-card-inner { position: relative; width: 100%; height: 240px; transform-style: preserve-3d; transition: transform 0.8s; }
 .service-card.is-flipped .service-card-inner { transform: rotateY(180deg); }
 .service-card-front, .service-card-back { position: absolute; inset: 0; backface-visibility: hidden; border-radius: 12px; overflow: hidden; display:flex; align-items:center; justify-content:center }
 .service-card-front { background-size: cover; background-position: center; box-shadow: 0 10px 30px rgba(0,0,0,0.12); }
@@ -601,8 +601,9 @@ body {
 }
 
 .lb-contact-label {
-  font-size: 0.86rem;
+  font-size: 14px;
   font-weight: 700;
+  text-align: left;
   color: $primary-color;
 }
 
@@ -616,6 +617,10 @@ body {
   font: inherit;
   transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
   box-shadow: inset 0 1px 2px rgba(17, 24, 39, 0.04);
+  &::placeholder{
+    font-size: 12px;
+    color:#6b7280;
+  }
 }
 
 .lb-contact-input:focus {
@@ -641,12 +646,15 @@ body {
   letter-spacing: 0.02em;
   box-shadow: 0 12px 24px rgba(140, 113, 223, 0.25);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width: 100%;
 }
 
 .lb-contact-submit:hover,
 .lb-contact-submit:focus {
   transform: translateY(-2px);
   box-shadow: 0 16px 28px rgba(140, 113, 223, 0.3);
+  background-color:$secondary-color;
+  color:$white;
 }
 
 .lb-form-sent {
@@ -714,13 +722,29 @@ body {
 .lb-team .container {
   text-align: center
 }
-
-.team-card {
-  background: var(--bg);
-  padding: 12px;
-  border-radius: 10px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+.lb-team-head {
+  margin-bottom: 30px;
+  .team-card {
+    background: var(--bg);
+    padding: 12px;
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    .team-info {
+      background-color: $primary-color;
+      border-radius: 8px;
+      color: $white;
+      position: relative;
+      bottom: -35px;
+      width: 80%;
+      margin: 0 auto;
+      padding: 8px;
+      >p{
+        color:$white;
+      }
+    }
+  }
 }
+
 
 .team-card img {
   width: 120px;

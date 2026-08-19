@@ -37,7 +37,7 @@ function App() {
       <Header onNavigate={handleNavigate} theme={theme} toggleTheme={toggleTheme} />
 
       <main>
-        <Hero />
+        <Hero onNavigate={handleNavigate} />
         <About />
         <Services />
         <Expertise />

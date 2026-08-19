@@ -1,16 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import member1 from '../assets/images/team-member-1.svg';
-import member2 from '../assets/images/team-member-2.svg';
-import member3 from '../assets/images/team-member-3.svg';
+import member1 from '../assets/images/doctor-1.JPG';
 
 // Our Team section
 // - Displays team member cards with subtle animations
 export default function Team() {
   const members = [
-    { name: 'Dr. Asha Rao', role: 'Head of R&D', img: member1 },
-    { name: 'Rahul Mehta', role: 'Lead Engineer', img: member2 },
-    { name: 'Sana Kulkarni', role: 'Product Director', img: member3 }
+    { name: 'Dr. Alex Jeff', role: 'Head of R&D', img: member1 },
+    { name: 'Rahul Mehta', role: 'Lead Engineer', img: member1 },
+    { name: 'Veena Kulkarni', role: 'Product Director', img: member1 }
   ];
 
   return (
@@ -25,9 +23,9 @@ export default function Team() {
           </div>
         </div>
 
-        <div className="row team-grid">
+        <div className="row">
           {members.map((m) => (
-            <div className="col-sm-6 col-md-4" key={m.name}>
+            <div className="col-sm-12 col-md-6 col-lg-4" key={m.name}>
               <motion.div className="team-card" initial={{ y: 30, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.5 }} whileHover={{ scale: 1.03 }}>
                 <img src={m.img} alt={m.name} className="img-fluid" />
                 <div className="team-info">

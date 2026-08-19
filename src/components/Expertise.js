@@ -14,54 +14,55 @@ export default function Expertise() {
 
   return (
     <section id="expertise" className="lb-section lb-expertise">
-      <div className="lb-expertise-inner">
-        <div className="lb-expertise-left">
-          <div className="expertise-orbit" role="img" aria-label="expertise orbit">
-            <div className="expertise-orbit-inner">
-              {/* center logo (static) */}
-              <div className="expertise-center brand-mark">
-                <div className="expertise-center-mark">MB</div>
+      <div className="container">
+        <div className="lb-expertise-inner row">
+          <div className="lb-expertise-left col-sm-12 col-md-6 col-lg-6">
+            <div className="expertise-orbit" role="img" aria-label="expertise orbit">
+              <div className="expertise-orbit-inner">
+                {/* center logo (static) */}
+                <div className="expertise-center brand-mark">
+                  <p className="expertise-center-mark">MB</p>
+                </div>
+
+                {/* For each item render a connector (from center) and a badge container at the target position.
+                    Connectors and badges share the same vertical animation so they stay visually connected. */}
+                {(() => {
+                  const targets = [
+                    { left: 0, top: 10},
+                    { left: 60, top: 10 },
+                    { left: 0, top: 82 },
+                    { left: 60, top: 82 }
+                  ];
+
+                  return items.map((it, idx) => {
+                    const { left, top } = targets[idx];
+                    const yAnim = [0, -10, 0];
+                    return (
+                      <React.Fragment key={it.id}>
+                        <motion.div
+                          className="expertise-badge orbit-item"
+                          style={{ left: `${left}%`, top: `${top}%`, transform: 'translate(-30%, -30%)' }}
+                          animate={{ y: yAnim }}
+                          transition={{ duration: 4 + idx * 0.3, repeat: Infinity, ease: 'easeInOut', delay: idx * 0.08 }}
+                        >
+                          <div className="expertise-badge-inner">{it.label}</div>
+                        </motion.div>
+                      </React.Fragment>
+                    );
+                  });
+                })()}
               </div>
-
-              {/* For each item render a connector (from center) and a badge container at the target position.
-                  Connectors and badges share the same vertical animation so they stay visually connected. */}
-              {(() => {
-                const angles = [-30, -120, -210, -300];
-                const radius = 40; // percent of container
-                return items.map((it, idx) => {
-                  const a = (angles[idx] * Math.PI) / 180;
-                  const left = 50 + radius * Math.cos(a);
-                  const top = 50 + radius * Math.sin(a);
-                  const dx = left - 50;
-                  const dy = top - 50;
-                  const distance = Math.sqrt(dx * dx + dy * dy);
-                  // badge vertical oscillation (±30px -> 60px total)
-                  const yAnim = [0, -30, 0];
-                  return (
-                    <React.Fragment key={it.id}>
-                      <motion.div
-                        className="expertise-badge orbit-item"
-                        style={{ left: `${left}%`, top: `${top}%`, transform: 'translate(-50%, -50%)' }}
-                        // remain visible and continuously animate Y offset
-                        animate={{ y: yAnim }}
-                        transition={{ duration: 4 + idx * 0.3, repeat: Infinity, ease: 'easeInOut', delay: idx * 0.08 }}
-                      >
-                        <div className="expertise-badge-inner">{it.label}</div>
-                      </motion.div>
-                    </React.Fragment>
-                  );
-                });
-              })()}
             </div>
-          </div>
 
           </div>
 
-          <div className="lb-expertise-right">
+          <div className="lb-expertise-right col-sm-12 col-md-6 col-lg-6">
           <h2>Our Expertise</h2>
           <p>Deep domain knowledge across multiple biotech disciplines, from lab research to regulatory strategy. We combine scientific rigor with practical implementation to support product development and clinical validation.</p>
+          </div>
         </div>
       </div>
+      
     </section>
   );
 }

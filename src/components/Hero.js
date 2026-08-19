@@ -41,6 +41,7 @@ export default function Hero({ onNavigate }) {
 
   return (
     <section id="hero" className="lb-section lb-hero ">
+      <div className="lb-hero-overlay"></div>
       <div className="container">
         {/* <video className="hero-video" autoPlay muted loop playsInline>
           <source src={heroVideo} type="video/mp4" />
@@ -53,7 +54,7 @@ export default function Hero({ onNavigate }) {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 20 }}
-                transition={{ duration: 0.5 }}
+                transition={{ duration: 1 }}
                 className="lb-hero-copy"
               >
                 <h2>{slides[index].title}</h2>
@@ -80,24 +81,24 @@ export default function Hero({ onNavigate }) {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 0.6 }}
+                transition={{ duration: 0.8 }}
               >
                 {index === 0 && (
                   <>
                     <motion.img src={i1} alt="i1" className="img-fluid hero-pos hero-pos-1"
                       initial={{ opacity: 0, scale: 0.96 }}
                       animate={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: 0.4, duration: 0.9, ease: 'easeOut' }}
+                      transition={{ delay: 0.5, duration: 1.2, ease: 'easeOut' }}
                     />
                     <motion.img src={i2} alt="i2" className="img-fluid hero-pos hero-pos-2"
                       initial={{ opacity: 0, scale: 0.96 }}
                       animate={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: 0.8, duration: 0.9, ease: 'easeOut' }}
+                      transition={{ delay: 1, duration: 1.2, ease: 'easeOut' }}
                     />
                     <motion.img src={i3} alt="i3" className="img-fluid hero-pos hero-pos-3"
                       initial={{ opacity: 0, scale: 0.96 }}
                       animate={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: 1.2, duration: 0.9, ease: 'easeOut' }}
+                      transition={{ delay: 1.5, duration: 1.2, ease: 'easeOut' }}
                     />
                   </>
                 )}

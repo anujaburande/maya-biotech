@@ -27,7 +27,7 @@ export default function Services() {
       <div className="container">
         <div className="row">
           {cards.slice(0,4).map((c) => (
-            <div key={c.id} className="col-12 col-sm-6 col-lg-3 mb-4 d-flex justify-content-center">
+            <div key={c.id} className="col-12 col-sm-6 col-lg-3 ">
               <div className={`service-card ${flipped[c.id] ? 'is-flipped' : ''}`} onClick={() => toggle(c.id)} onMouseEnter={() => {} }>
                 <div className="service-card-inner">
                   <div className="service-card-front" style={{ backgroundImage: `url(${c.img})` }}>
