@@ -49,7 +49,7 @@ export default function Header({ onNavigate, theme, toggleTheme }) {
     <header className={`lb-header ${scrolled ? 'scrolled' : ''}`}>
       <nav className="navbar navbar-expand-md">
         <div className="container lb-header-inner">
-          <a className="navbar-brand d-flex align-items-center" href="#" onClick={(e) => { e.preventDefault(); onNavClick('hero'); }}>
+          <a className="navbar-brand d-flex align-items-center" onClick={(e) => { e.preventDefault(); onNavClick('hero'); }}>
             <div className="lb-logo-mark">MB</div>
             <div className="lb-logo-text ms-2">Maya Biotech</div>
           </a>
