@@ -42,9 +42,6 @@ export default function Hero({ onNavigate }) {
     <section id="hero" className="lb-section lb-hero ">
       <div className="lb-hero-overlay"></div>
       <div className="container">
-        {/* <video className="hero-video" autoPlay muted loop playsInline>
-          <source src={heroVideo} type="video/mp4" />
-        </video> */}
         <div className="lb-hero-inner row">
           <div className="lb-hero-left col-sm-12 col-md-6 col-lg-6 ">
             <AnimatePresence mode="wait">
